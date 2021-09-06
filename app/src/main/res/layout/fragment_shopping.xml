@@ -48,17 +48,25 @@
             app:layout_constraintTop_toBottomOf="@+id/shopping_Header"
             app:layout_constraintVertical_bias="0.017" />
 
-        <TextView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/fruit_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:textAlignment="viewStart"
-            android:textSize="20sp"
-            android:text="@{shoppingViewModel.fruitVegString}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/header_fruit" />
-
+            app:layout_constraintTop_toBottomOf="@+id/header_fruit"
+            app:layout_constraintBottom_toTopOf="@id/dairy_list"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+<!--        <TextView-->
+<!--            android:id="@+id/fruit_list"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:textAlignment="viewStart"-->
+<!--            android:textSize="20sp"-->
+<!--            android:text="@{shoppingViewModel.fruitVegString}"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/header_fruit" />-->
         <TextView
             android:id="@+id/header_dairy"
             android:layout_width="match_parent"
