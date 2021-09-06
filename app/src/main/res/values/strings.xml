@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">iShop_2</string>
+    <string name="welcome_string">Welcome to iShop</string>
+    <string name="new_list_button">Create my Shopping List</string>
+    <string name="retrieve_list_button">Use an existing Shopping List</string>
+    <string name="choose_from_existing_title">Choose from existing Lists</string>
+    <string name="generate_list">Generate my Shopping List</string>
+    <string name="shopping_header">Let\'s go shopping!</string>
+
+    <!-- Grocery category headers-->
+    <string name="fruit_veg">Fruits and Vegetables</string>
+    <string name="seafood">Fish and Seafood</string>
+    <string name="meat">Meat and Poultry</string>
+    <string name="dairy">Dairy</string>
+    <string name="alcohol">Alcoholic Beverages</string>
+    <string name="add_button">Add</string>
+    <string name="set_name">Set new List Name</string>
+    <string name="name_already_taken">This List name is already in use. Please select a different list name.</string>
+    <string name="button_choose_list">Continue with this list</string>
+
+</resources>

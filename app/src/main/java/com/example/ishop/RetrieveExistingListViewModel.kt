@@ -1,0 +1,49 @@
+package com.example.ishop
+
+import android.app.Application
+import android.text.Html
+import android.text.Spanned
+import android.widget.Spinner
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import com.example.ishop.database.GroceryItemListDatabaseDao
+import kotlinx.coroutines.*
+
+class RetrieveExistingListViewModel (
+    private val database: GroceryItemListDatabaseDao,
+    application: Application
+) : AndroidViewModel(application) {
+
+    private var viewModelJob = Job()
+    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
+
+    private val _nameList = MutableLiveData<Array<String>>()
+    val nameList: LiveData<Array<String>>
+        get() = _nameList
+
+    private val _itemSelected = MutableLiveData<Boolean>()
+    val itemSelected: LiveData<Boolean>
+        get() = _itemSelected
+
+    private suspend fun getAllLists(): Array<String> {
+        return withContext(Dispatchers.IO) {
+            return@withContext database.getArrayNames()
+        }
+    }
+
+    fun setNameString() {
+        uiScope.launch {
+            _nameList.value = getAllLists()
+        }
+    }
+
+    fun setReadyToNavigate() {
+        _itemSelected.value = true
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
+    }
+}

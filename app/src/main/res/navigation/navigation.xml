@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/titleFragment">
+
+    <fragment
+        android:id="@+id/titleFragment"
+        android:name="com.example.ishop.TitleFragment"
+        android:label="TitleFragment" >
+        <action
+            android:id="@+id/action_titleFragment_to_retrieveExistingListFragment"
+            app:destination="@id/retrieveExistingListFragment" />
+        <action
+            android:id="@+id/action_titleFragment_to_chooseNewNameFragment"
+            app:destination="@id/chooseNewNameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newListFragment"
+        android:name="com.example.ishop.NewListFragment"
+        android:label="fragment_new_list"
+        tools:layout="@layout/fragment_new_list" >
+        <action
+            android:id="@+id/action_newListFragment_to_shoppingFragment"
+            app:destination="@id/shoppingFragment"
+            app:popUpTo="@id/titleFragment"
+            app:popUpToInclusive="false" />
+        <argument
+            android:name="listName"
+            app:argType="string" />
+        <argument
+            android:name="showItems"
+            app:argType="boolean" />
+    </fragment>
+    <fragment
+        android:id="@+id/retrieveExistingListFragment"
+        android:name="com.example.ishop.RetrieveExistingListFragment"
+        android:label="RetrieveExistingListFragment" >
+        <action
+            android:id="@+id/action_retrieveExistingListFragment_to_newListFragment"
+            app:destination="@id/newListFragment"
+            app:popUpTo="@id/titleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/shoppingFragment"
+        android:name="com.example.ishop.ShoppingFragment"
+        android:label="ShoppingFragment">
+        <argument android:name="listName"
+         app:argType="string"   />
+    </fragment>
+    <fragment
+        android:id="@+id/chooseNewNameFragment"
+        android:name="com.example.ishop.ChooseNewNameFragment"
+        android:label="ChooseNewNameFragment" >
+        <action
+            android:id="@+id/action_chooseNewNameFragment_to_newListFragment"
+            app:destination="@id/newListFragment"
+            app:popUpTo="@id/titleFragment" />
+    </fragment>
+</navigation>
