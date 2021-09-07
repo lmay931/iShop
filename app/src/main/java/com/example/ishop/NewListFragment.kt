@@ -130,6 +130,46 @@ class NewListFragment : Fragment() {
             groceryListViewModel.setNavigateToShopping()
         }
 
+        val fruitAdapter = ItemAdapter()
+        binding.addedFruitVegTextView.adapter = fruitAdapter
+        groceryListViewModel.fruitVegList.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                fruitAdapter.data = it
+            }
+        })
+
+        val dairyAdapter = ItemAdapter()
+        binding.addedDairyTextView.adapter = dairyAdapter
+        groceryListViewModel.dairyString.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                dairyAdapter.data = it
+            }
+        })
+
+        val meatAdapter = ItemAdapter()
+        binding.addedMeatTextView.adapter = meatAdapter
+        groceryListViewModel.meatString.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                meatAdapter.data = it
+            }
+        })
+
+        val seafoodAdapter = ItemAdapter()
+        binding.addedSeafoodTextView.adapter = seafoodAdapter
+        groceryListViewModel.seafoodString.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                seafoodAdapter.data = it
+            }
+        })
+
+        val alcAdapter = ItemAdapter()
+        binding.addedAlcoholTextView.adapter = alcAdapter
+        groceryListViewModel.alcoholString.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                alcAdapter.data = it
+            }
+        })
+
         return binding.root
     }
 }

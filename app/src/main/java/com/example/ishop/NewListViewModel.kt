@@ -33,21 +33,11 @@ class NewListViewModel (
     fun doneShowingSnackBar() {
         _showSnackBarEvent.value = false
     }
-    var fruitVegString = Transformations.map(database.get(nameList, "fruit")) {
-            allItems -> formatItems(allItems)
-    }
-    var dairyString = Transformations.map(database.get(nameList,"dairy")) {
-            allItems -> formatItems(allItems)
-    }
-    var meatString = Transformations.map(database.get(nameList,"meat")) {
-            allItems -> formatItems(allItems)
-    }
-    var seafoodString = Transformations.map(database.get(nameList,"seafood")) {
-            allItems -> formatItems(allItems)
-    }
-    var alcoholString = Transformations.map(database.get(nameList,"alcohol")) {
-            allItems -> formatItems(allItems)
-    }
+    var fruitVegList = database.get(nameList, "fruit")
+    var dairyString = database.get(nameList,"dairy")
+    var meatString = database.get(nameList,"meat")
+    var seafoodString = database.get(nameList,"seafood")
+    var alcoholString = database.get(nameList,"alcohol")
 
     private val _navigateToShopping = MutableLiveData<String>()
     val navigateToShopping: LiveData<String>
