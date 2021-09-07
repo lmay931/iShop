@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-parcelize'
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs'
 }
@@ -58,6 +59,7 @@ dependencies {
     implementation "androidx.room:room-runtime:$version_room"
     implementation "androidx.room:room-ktx:$version_room"
     kapt "androidx.room:room-compiler:$version_room"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$version_lifecycle_extensions"
     implementation "androidx.lifecycle:lifecycle-extensions:$version_lifecycle_extensions"
 
     // Coroutines

@@ -2,7 +2,7 @@
 buildscript {
 
     ext.kotlin_version = '<kotlin-version>'
-    ext.android_plugin_version = '7.0.1'
+    ext.android_plugin_version = '7.0.2'
     ext.version_navigation = '1.5.0'
     ext.version_room = "2.3.0"
 

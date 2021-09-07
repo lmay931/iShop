@@ -16,19 +16,5 @@ class ShoppingViewModel (
     application: Application
 ) : AndroidViewModel(application) {
 
-    var fruitVegString = Transformations.map(database.get(listName, "fruit")) {
-            allItems -> formatItems(allItems)
-    }
-    var dairyString = Transformations.map(database.get(listName,"dairy")) {
-            allItems -> formatItems(allItems)
-    }
-    var meatString = Transformations.map(database.get(listName,"meat")) {
-            allItems -> formatItems(allItems)
-    }
-    var seafoodString = Transformations.map(database.get(listName,"seafood")) {
-            allItems -> formatItems(allItems)
-    }
-    var alcoholString = Transformations.map(database.get(listName,"alcohol")) {
-            allItems -> formatItems(allItems)
-    }
+    var groceryItems = database.getAll(listName)
 }
