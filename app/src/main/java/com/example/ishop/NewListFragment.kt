@@ -1,5 +1,6 @@
 package com.example.ishop
 
+import android.graphics.Paint.STRIKE_THRU_TEXT_FLAG
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
