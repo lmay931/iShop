@@ -38,7 +38,7 @@ class ShoppingFragment : Fragment() {
         binding.shoppingViewModel = shoppingViewModel
         binding.lifecycleOwner = this
 
-        val adapter = ItemAdapter()
+        val adapter = ItemAdapterShopping()
         binding.groceryList.adapter = adapter
 
         shoppingViewModel.groceryItems.observe(viewLifecycleOwner, Observer {

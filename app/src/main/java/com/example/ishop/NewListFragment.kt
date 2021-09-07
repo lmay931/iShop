@@ -130,7 +130,7 @@ class NewListFragment : Fragment() {
             groceryListViewModel.setNavigateToShopping()
         }
 
-        val fruitAdapter = ItemAdapter()
+        val fruitAdapter = ItemAdapterNewList()
         binding.addedFruitVegTextView.adapter = fruitAdapter
         groceryListViewModel.fruitVegList.observe(viewLifecycleOwner, Observer {
             it?.let {
@@ -138,7 +138,7 @@ class NewListFragment : Fragment() {
             }
         })
 
-        val dairyAdapter = ItemAdapter()
+        val dairyAdapter = ItemAdapterNewList()
         binding.addedDairyTextView.adapter = dairyAdapter
         groceryListViewModel.dairyString.observe(viewLifecycleOwner, Observer {
             it?.let {
@@ -146,7 +146,7 @@ class NewListFragment : Fragment() {
             }
         })
 
-        val meatAdapter = ItemAdapter()
+        val meatAdapter = ItemAdapterNewList()
         binding.addedMeatTextView.adapter = meatAdapter
         groceryListViewModel.meatString.observe(viewLifecycleOwner, Observer {
             it?.let {
@@ -154,7 +154,7 @@ class NewListFragment : Fragment() {
             }
         })
 
-        val seafoodAdapter = ItemAdapter()
+        val seafoodAdapter = ItemAdapterNewList()
         binding.addedSeafoodTextView.adapter = seafoodAdapter
         groceryListViewModel.seafoodString.observe(viewLifecycleOwner, Observer {
             it?.let {
@@ -162,7 +162,7 @@ class NewListFragment : Fragment() {
             }
         })
 
-        val alcAdapter = ItemAdapter()
+        val alcAdapter = ItemAdapterNewList()
         binding.addedAlcoholTextView.adapter = alcAdapter
         groceryListViewModel.alcoholString.observe(viewLifecycleOwner, Observer {
             it?.let {
