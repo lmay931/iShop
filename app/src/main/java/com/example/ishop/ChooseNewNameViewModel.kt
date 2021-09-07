@@ -22,19 +22,22 @@ class ChooseNewNameViewModel (
     val nameList: LiveData<String>
         get() = _nameList
 
-    private var _showSnackBarEvent = MutableLiveData<Boolean>()
-    val showSnackBarEvent: LiveData<Boolean>
+    private var _showSnackBarEvent = MutableLiveData<Int?>()
+    val showSnackBarEvent: MutableLiveData<Int?>
         get() = _showSnackBarEvent
 
     fun doneShowingSnackBar() {
-        _showSnackBarEvent.value = false
+        _showSnackBarEvent.value = null
     }
 
     fun setNameList(name : String){
         uiScope.launch {
             val list = getAllLists()
             if(name in list) {
-                _showSnackBarEvent.value = true
+                _showSnackBarEvent.value = 1
+            }
+            else if (name == "") {
+                _showSnackBarEvent.value = 2
             }
             else {
                 _nameList.value = name

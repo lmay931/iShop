@@ -39,10 +39,18 @@ class ChooseNewNameFragment : Fragment() {
         }
 
         chooseNewNameViewModel.showSnackBarEvent.observe(viewLifecycleOwner, Observer {
-            if (it == true) {
+            if (it == 1) {
                 Snackbar.make(
                     requireActivity().findViewById(android.R.id.content),
                     getString(R.string.name_already_taken),
+                    Snackbar.LENGTH_LONG
+                ).show()
+                chooseNewNameViewModel.doneShowingSnackBar()
+            }
+            if (it == 2) {
+                Snackbar.make(
+                    requireActivity().findViewById(android.R.id.content),
+                    getString(R.string.name_not_valid),
                     Snackbar.LENGTH_LONG
                 ).show()
                 chooseNewNameViewModel.doneShowingSnackBar()

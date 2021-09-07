@@ -1,5 +1,6 @@
 package com.example.ishop
 
+import android.graphics.Paint.STRIKE_THRU_TEXT_FLAG
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -44,6 +45,11 @@ class ItemAdapterNewList : RecyclerView.Adapter<ItemAdapterNewList.ViewHolder>()
         val item = data[position]
         holder.item.text = item.Item
     }
+
+//        if (item.inBasket == true) {
+//            holder.item.setFlags(STRIKE_THRU_TEXT_FLAG)
+//        }
+//    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)

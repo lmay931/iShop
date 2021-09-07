@@ -16,6 +16,7 @@
     <string name="add_button">Add</string>
     <string name="set_name">Set new List Name</string>
     <string name="name_already_taken">This List name is already in use. Please select a different list name.</string>
+    <string name="name_not_valid">Please select a valid list name.</string>
     <string name="button_choose_list">Continue with this list</string>
     <string name="switch_value">Got it!</string>
 
