@@ -41,9 +41,8 @@
         android:name="com.example.ishop.RetrieveExistingListFragment"
         android:label="RetrieveExistingListFragment" >
         <action
-            android:id="@+id/action_retrieveExistingListFragment_to_newListFragment"
-            app:destination="@id/newListFragment"
-            app:popUpTo="@id/titleFragment" />
+            android:id="@+id/action_retrieveExistingListFragment_to_shoppingFragment"
+            app:destination="@id/shoppingFragment" />
     </fragment>
     <fragment
         android:id="@+id/shoppingFragment"
@@ -51,6 +50,9 @@
         android:label="ShoppingFragment">
         <argument android:name="listName"
          app:argType="string"   />
+        <action
+            android:id="@+id/action_shoppingFragment_to_newListFragment"
+            app:destination="@id/newListFragment" />
     </fragment>
     <fragment
         android:id="@+id/chooseNewNameFragment"

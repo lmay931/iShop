@@ -63,7 +63,7 @@ class RetrieveExistingListFragment : Fragment(), AdapterView.OnItemSelectedListe
                     itemSelected.let {
                         this.findNavController().navigate(
                             RetrieveExistingListFragmentDirections.
-                            actionRetrieveExistingListFragmentToNewListFragment(selectedList,true))
+                            actionRetrieveExistingListFragmentToShoppingFragment(selectedList))
                     }
                 })
             }
