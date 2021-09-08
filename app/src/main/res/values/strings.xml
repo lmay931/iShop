@@ -21,5 +21,6 @@
     <string name="switch_value">Got it!</string>
     <string name="manage_lists">Manage current Shopping Lists</string>
     <string name="clear_all_lists">Clear all existing lists</string>
+    <string name="image_of_shopping_trolley">Image of shopping trolley</string>
 
 </resources>

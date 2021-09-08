@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_titleFragment_to_chooseNewNameFragment"
             app:destination="@id/chooseNewNameFragment" />
+        <action
+            android:id="@+id/action_titleFragment_to_manageListsFragment"
+            app:destination="@id/manageListsFragment" />
     </fragment>
     <fragment
         android:id="@+id/newListFragment"
@@ -58,4 +61,8 @@
             app:destination="@id/newListFragment"
             app:popUpTo="@id/titleFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/manageListsFragment"
+        android:name="com.example.ishop.manageLists.ManageListsFragment"
+        android:label="ManageListsFragment" />
 </navigation>

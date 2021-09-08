@@ -56,7 +56,7 @@ class RetrieveExistingListFragment : Fragment(), AdapterView.OnItemSelectedListe
                 binding.retrieveExistingListViewModel = retrieveViewModel
                 binding.lifecycleOwner = this
 
-                binding.chooseExistingButton.setOnClickListener{
+                binding.existingListsButton.setOnClickListener{
                     retrieveViewModel.setReadyToNavigate()
                 }
                 retrieveViewModel.itemSelected.observe(viewLifecycleOwner, Observer { itemSelected: Boolean ->

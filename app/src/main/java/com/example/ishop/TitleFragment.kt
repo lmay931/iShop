@@ -26,6 +26,9 @@ class TitleFragment : Fragment() {
         binding.retrieveListButton.setOnClickListener (
             Navigation.createNavigateOnClickListener(R.id.action_titleFragment_to_retrieveExistingListFragment))
 
+        binding.manageListsButton.setOnClickListener(
+            Navigation.createNavigateOnClickListener(R.id.action_titleFragment_to_manageListsFragment))
+
         return binding.root
     }
 }
