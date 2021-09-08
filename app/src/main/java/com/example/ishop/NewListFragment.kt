@@ -39,7 +39,7 @@ class NewListFragment : Fragment() {
         binding.newListViewModel = groceryListViewModel
         binding.lifecycleOwner = this
 
-        fun addFruitItem(view: View) {
+        fun addFruitItem() {
             val text = binding.addFruitVegeItem.text.toString()
             if (text == "") {
                 return
@@ -51,7 +51,7 @@ class NewListFragment : Fragment() {
             groceryListViewModel.addItem( "fruit",text)
         }
 
-        fun addDairyItem(view: View) {
+        fun addDairyItem() {
             val text = binding.addDairyItem.text.toString()
             if (text == "") {
                 return
@@ -63,7 +63,7 @@ class NewListFragment : Fragment() {
             groceryListViewModel.addItem( "dairy",text)
         }
 
-        fun addMeatItem(view: View) {
+        fun addMeatItem() {
             val text = binding.addMeatItem.text.toString()
             if (text == "") {
                 return
@@ -75,7 +75,7 @@ class NewListFragment : Fragment() {
             groceryListViewModel.addItem( "meat",text)
         }
 
-        fun addSeafoodItem(view: View) {
+        fun addSeafoodItem() {
             val text = binding.addFishSeafoodItem.text.toString()
             if (text == "") {
                 return
@@ -87,7 +87,7 @@ class NewListFragment : Fragment() {
             groceryListViewModel.addItem( "seafood",text)
         }
 
-        fun addAlcoholItem(view: View) {
+        fun addAlcoholItem() {
             val text = binding.addAlcoholItem.text.toString()
             if (text == "") {
                 return
@@ -100,19 +100,19 @@ class NewListFragment : Fragment() {
         }
 
         binding.buttonFruitVeg.setOnClickListener {
-            addFruitItem(it)
+            addFruitItem()
         }
         binding.buttonDairy.setOnClickListener {
-            addDairyItem(it)
+            addDairyItem()
         }
         binding.buttonMeat.setOnClickListener {
-            addMeatItem(it)
+            addMeatItem()
         }
         binding.buttonSeafood.setOnClickListener {
-            addSeafoodItem(it)
+            addSeafoodItem()
         }
         binding.buttonAlcohol.setOnClickListener {
-            addAlcoholItem(it)
+            addAlcoholItem()
         }
 
         groceryListViewModel.navigateToShopping.observe(viewLifecycleOwner, Observer { nameList : String ->

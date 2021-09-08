@@ -6,25 +6,27 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import com.example.ishop.databinding.FragmentManageCurrentListsBinding
+import androidx.lifecycle.ViewModelProvider
+import com.example.ishop.database.GroceryItemListDatabase
+import com.example.ishop.databinding.FragmentManageListsBinding
 
 class ManageListsFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
 
-        val binding: FragmentManageCurrentListsBinding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_manage_current_lists, container, false
+        val binding: FragmentManageListsBinding = DataBindingUtil.inflate(
+            inflater, R.layout.fragment_manage_lists, container, false
         )
 
-//        val application = requireNotNull(this.activity).application
-//        val dataSource = GroceryItemListDatabase.getInstance(application).groceryItemDatabaseDao
+        val application = requireNotNull(this.activity).application
+        val dataSource = GroceryItemListDatabase.getInstance(application).groceryItemDatabaseDao
 
-//        val viewModelFactory = ShoppingViewModelFactory(dataSource, application)
+        val viewModelFactory = ManageListsViewModelFactory(dataSource, application)
 
-//        val shoppingViewModel = ViewModelProvider(this, viewModelFactory).get(ShoppingViewModel::class.java)
+        val manageListsViewModel = ViewModelProvider(this, viewModelFactory).get(ManageListsViewModel::class.java)
 
-//        binding.shoppingViewModel = shoppingViewModel
-//        binding.lifecycleOwner = this
+        binding.manageListsViewModel = manageListsViewModel
+        binding.lifecycleOwner = this
 
 //        val adapter = ItemAdapterShopping()
 //        binding.groceryList.adapter = adapter
