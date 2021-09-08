@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import com.example.ishop.database.GroceryItemListDatabase
 import com.example.ishop.databinding.FragmentManageCurrentListsBinding
 
 class ManageListsFragment : Fragment() {
@@ -17,15 +16,15 @@ class ManageListsFragment : Fragment() {
             inflater, R.layout.fragment_manage_current_lists, container, false
         )
 
-        val application = requireNotNull(this.activity).application
-        val dataSource = GroceryItemListDatabase.getInstance(application).groceryItemDatabaseDao
+//        val application = requireNotNull(this.activity).application
+//        val dataSource = GroceryItemListDatabase.getInstance(application).groceryItemDatabaseDao
 
 //        val viewModelFactory = ShoppingViewModelFactory(dataSource, application)
 
 //        val shoppingViewModel = ViewModelProvider(this, viewModelFactory).get(ShoppingViewModel::class.java)
 
 //        binding.shoppingViewModel = shoppingViewModel
-        binding.lifecycleOwner = this
+//        binding.lifecycleOwner = this
 
 //        val adapter = ItemAdapterShopping()
 //        binding.groceryList.adapter = adapter
