@@ -67,11 +67,11 @@
     </fragment>
     <fragment
         android:id="@+id/manageListsFragment"
-        android:name="com.example.ishop.manageLists.ManageCategoriesFragment"
+        android:name="com.example.ishop.ManageCategoriesFragment"
         android:label="ManageListsFragment" />
     <fragment
         android:id="@+id/manageCategoriesFragment"
-        android:name="com.example.ishop.manageCategories.ManageCategoriesFragment"
+        android:name="com.example.ishop.ManageCategoriesFragment"
         android:label="ManageCategoriesFragment" >
         <action
             android:id="@+id/action_manageCategoriesFragment_to_newListFragment"
