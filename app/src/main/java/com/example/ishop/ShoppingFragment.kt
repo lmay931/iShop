@@ -43,7 +43,7 @@ class ShoppingFragment : Fragment() {
 
         shoppingViewModel.groceryItems.observe(viewLifecycleOwner, Observer {
             it?.let {
-                adapter.data = it
+                adapter.submitList(it)
             }
         })
 

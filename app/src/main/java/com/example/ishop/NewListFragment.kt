@@ -1,8 +1,6 @@
 package com.example.ishop
 
-import android.graphics.Paint.STRIKE_THRU_TEXT_FLAG
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,11 +8,9 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.ishop.database.GroceryItemListDatabase
 import com.example.ishop.databinding.FragmentNewListBinding
-import com.google.android.material.snackbar.Snackbar
 
 class NewListFragment : Fragment() {
 
@@ -135,7 +131,7 @@ class NewListFragment : Fragment() {
         binding.addedFruitVegTextView.adapter = fruitAdapter
         groceryListViewModel.fruitVegList.observe(viewLifecycleOwner, Observer {
             it?.let {
-                fruitAdapter.data = it
+                fruitAdapter.submitList(it)
             }
         })
 
@@ -143,7 +139,7 @@ class NewListFragment : Fragment() {
         binding.addedDairyTextView.adapter = dairyAdapter
         groceryListViewModel.dairyString.observe(viewLifecycleOwner, Observer {
             it?.let {
-                dairyAdapter.data = it
+                dairyAdapter.submitList(it)
             }
         })
 
@@ -151,7 +147,7 @@ class NewListFragment : Fragment() {
         binding.addedMeatTextView.adapter = meatAdapter
         groceryListViewModel.meatString.observe(viewLifecycleOwner, Observer {
             it?.let {
-                meatAdapter.data = it
+                meatAdapter.submitList(it)
             }
         })
 
@@ -159,7 +155,7 @@ class NewListFragment : Fragment() {
         binding.addedSeafoodTextView.adapter = seafoodAdapter
         groceryListViewModel.seafoodString.observe(viewLifecycleOwner, Observer {
             it?.let {
-                seafoodAdapter.data = it
+                seafoodAdapter.submitList(it)
             }
         })
 
@@ -167,7 +163,7 @@ class NewListFragment : Fragment() {
         binding.addedAlcoholTextView.adapter = alcAdapter
         groceryListViewModel.alcoholString.observe(viewLifecycleOwner, Observer {
             it?.let {
-                alcAdapter.data = it
+                alcAdapter.submitList(it)
             }
         })
 
