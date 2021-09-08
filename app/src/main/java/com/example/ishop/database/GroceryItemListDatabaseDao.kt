@@ -15,6 +15,9 @@ interface GroceryItemListDatabaseDao{
     @Update
     fun update(item: GroceryItem)
 
+    @Query("DELETE FROM shopping_list_table")
+    fun clearAll()
+
     @Query("SELECT * FROM shopping_list_table WHERE list_name= :key1 AND grocery_category= :key2")
     fun get(key1: String?, key2: String): LiveData<List<GroceryItem>>
 
