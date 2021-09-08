@@ -22,5 +22,7 @@
     <string name="manage_lists">Manage current Shopping Lists</string>
     <string name="clear_all_lists">Clear all existing lists</string>
     <string name="image_of_shopping_trolley">Image of shopping trolley</string>
+    <string name="proceed_with_these_categories_button_text">Proceed with these categories</string>
+    <string name="manage_grocery_categories">Manage grocery categories</string>
 
 </resources>

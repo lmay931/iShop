@@ -53,18 +53,31 @@
         <action
             android:id="@+id/action_shoppingFragment_to_newListFragment"
             app:destination="@id/newListFragment" />
+        <action
+            android:id="@+id/action_shoppingFragment_to_manageCategoriesFragment"
+            app:destination="@id/manageCategoriesFragment" />
     </fragment>
     <fragment
         android:id="@+id/chooseNewNameFragment"
         android:name="com.example.ishop.ChooseNewNameFragment"
         android:label="ChooseNewNameFragment" >
         <action
-            android:id="@+id/action_chooseNewNameFragment_to_newListFragment"
-            app:destination="@id/newListFragment"
-            app:popUpTo="@id/titleFragment" />
+            android:id="@+id/action_chooseNewNameFragment_to_manageCategoriesFragment"
+            app:destination="@id/manageCategoriesFragment" />
     </fragment>
     <fragment
         android:id="@+id/manageListsFragment"
-        android:name="com.example.ishop.manageLists.ManageListsFragment"
+        android:name="com.example.ishop.manageLists.ManageCategoriesFragment"
         android:label="ManageListsFragment" />
+    <fragment
+        android:id="@+id/manageCategoriesFragment"
+        android:name="com.example.ishop.manageCategories.ManageCategoriesFragment"
+        android:label="ManageCategoriesFragment" >
+        <action
+            android:id="@+id/action_manageCategoriesFragment_to_newListFragment"
+            app:destination="@id/newListFragment" />
+        <argument
+            android:name="listName"
+            app:argType="string" />
+    </fragment>
 </navigation>
