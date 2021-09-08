@@ -61,7 +61,7 @@ class ChooseNewNameFragment : Fragment() {
             nameList.let {
                 this.findNavController().navigate(
                     ChooseNewNameFragmentDirections.
-                    actionChooseNewNameFragmentToManageCategoriesFragment(nameList))
+                    actionChooseNewNameFragmentToManageCategoriesFragment(nameList,false))
             }
         })
 

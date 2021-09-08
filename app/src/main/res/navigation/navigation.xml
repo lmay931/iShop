@@ -89,5 +89,8 @@
         <argument
             android:name="listName"
             app:argType="string" />
+        <argument
+            android:name="showItems"
+            app:argType="boolean" />
     </fragment>
 </navigation>

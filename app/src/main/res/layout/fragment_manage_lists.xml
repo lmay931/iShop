@@ -17,7 +17,7 @@
                 android:id="@+id/retrieve_header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/choose_from_existing_title"
+                android:text="@string/manage_lists"
                 android:textAlignment="center"
                 android:textSize="24sp"
                 android:textStyle="bold"

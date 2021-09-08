@@ -15,9 +15,40 @@ class ManageListsViewModel (
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    private val _nameList = MutableLiveData<String>()
-    val nameList: LiveData<String>
+    private val _nameList = MutableLiveData<List<String>>()
+    val nameList: LiveData<List<String>>
         get() = _nameList
+
+    private var _showSnackBarEvent = MutableLiveData<Boolean>()
+    val showSnackBarEvent: MutableLiveData<Boolean>
+        get() = _showSnackBarEvent
+
+    fun doneShowingSnackBar() {
+        _showSnackBarEvent.value = false
+    }
+
+    fun setSnackBar() {
+        _showSnackBarEvent.value = true
+    }
+
+    fun deleteALL(): Unit? {
+        uiScope.launch {
+            clearALL()
+        }
+        return null
+    }
+
+    fun getLists() {
+        uiScope.launch {
+            _nameList.value = getAllLists()
+        }
+    }
+
+    private suspend fun clearALL() {
+        withContext(Dispatchers.IO) {
+            database.clearAll()
+        }
+    }
 
     private suspend fun getAllLists(): List<String> {
         return withContext(Dispatchers.IO) {

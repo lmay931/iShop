@@ -38,7 +38,6 @@ class ItemAdapterShopping : ListAdapter<GroceryItem,ItemAdapterShopping.ViewHold
     class ViewHolder(val binding: ListItemGroceryItemBinding): RecyclerView.ViewHolder(binding.root)
 }
 
-
 //ViewHolder for NewList
 class ItemAdapterNewList : ListAdapter<GroceryItem,ItemAdapterNewList.ViewHolder>(GroceryItemDiffCallback()) {
 
@@ -55,13 +54,38 @@ class ItemAdapterNewList : ListAdapter<GroceryItem,ItemAdapterNewList.ViewHolder
     class ViewHolder(val binding: ListItemNewListBinding): RecyclerView.ViewHolder(binding.root)
 }
 
-
 class GroceryItemDiffCallback : DiffUtil.ItemCallback<GroceryItem>() {
     override fun areItemsTheSame(oldItem: GroceryItem, newItem: GroceryItem): Boolean {
         return oldItem.ItemId == newItem.ItemId
     }
 
     override fun areContentsTheSame(oldItem: GroceryItem, newItem: GroceryItem): Boolean {
+        return oldItem == newItem
+    }
+}
+
+//ViewHolder for Manage Lists
+class ItemAdapterStrings : ListAdapter<String,ItemAdapterStrings.ViewHolder>(StringDiffCallback()) {
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = getItem(position)
+        holder.binding.itemName.text = item
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val binding = ListItemNewListBinding.inflate(layoutInflater,parent, false)
+        return ViewHolder(binding)
+    }
+    class ViewHolder(val binding: ListItemNewListBinding): RecyclerView.ViewHolder(binding.root)
+}
+
+class StringDiffCallback : DiffUtil.ItemCallback<String>() {
+    override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
+        return oldItem == newItem
+    }
+
+    override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
         return oldItem == newItem
     }
 }

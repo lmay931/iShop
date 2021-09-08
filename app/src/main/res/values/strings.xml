@@ -21,6 +21,7 @@
     <string name="switch_value">Got it!</string>
     <string name="manage_lists">Manage current Shopping Lists</string>
     <string name="clear_all_lists">Clear all existing lists</string>
+    <string name="all_lists_deleted">All Lists have been deleted.</string>
     <string name="image_of_shopping_trolley">Image of shopping trolley</string>
     <string name="proceed_with_these_categories_button_text">Proceed with these categories</string>
     <string name="manage_grocery_categories">Manage grocery categories</string>

@@ -33,15 +33,17 @@ class ChooseNewNameViewModel (
     fun setNameList(name : String){
         uiScope.launch {
             val list = getAllLists()
-            if(name in list) {
-                _showSnackBarEvent.value = 1
-            }
-            else if (name == "") {
-                _showSnackBarEvent.value = 2
-            }
-            else {
-                _nameList.value = name
+            when (name) {
+                in list -> {
+                    _showSnackBarEvent.value = 1
                 }
+                "" -> {
+                    _showSnackBarEvent.value = 2
+                }
+                else -> {
+                    _nameList.value = name
+                }
+            }
             }
         }
 
