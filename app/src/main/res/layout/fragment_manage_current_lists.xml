@@ -9,14 +9,10 @@
             name="retrieveExistingListViewModel"
             type="com.example.ishop.RetrieveExistingListViewModel" />
     </data>
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="40dp">
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/retrieve_header"
@@ -30,30 +26,32 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <Spinner
-                android:id="@+id/existing_lists_spinner"
-                android:layout_width="332dp"
-                android:layout_height="86dp"
-                android:layout_marginTop="128dp"
-                android:layout_marginBottom="64dp"
-                android:textAlignment="center"
-                android:textSize="16sp"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/existing_lists"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toTopOf="@+id/clear_all_lists_button"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/retrieve_header" />
 
-            <Button
-                android:id="@+id/clear_all_lists_button"
-                android:layout_width="338dp"
-                android:layout_height="66dp"
-                android:layout_marginBottom="12dp"
-                android:text="@string/button_choose_list"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/existing_lists_spinner"
-                app:layout_constraintStart_toStartOf="@+id/existing_lists_spinner" />
+        <Button
+            android:id="@+id/clear_all_lists_button"
+            android:layout_width="338dp"
+            android:layout_height="66dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#FF5722"
+            android:text="@string/clear_all_lists"
+            android:textColor="#212121"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/existing_lists"
+            app:layout_constraintStart_toStartOf="@+id/existing_lists"
+            app:layout_constraintTop_toBottomOf="@+id/existing_lists" />
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

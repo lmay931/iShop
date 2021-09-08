@@ -19,5 +19,7 @@
     <string name="name_not_valid">Please select a valid list name.</string>
     <string name="button_choose_list">Continue with this list</string>
     <string name="switch_value">Got it!</string>
+    <string name="manage_lists">Manage current Shopping Lists</string>
+    <string name="clear_all_lists">Clear all existing lists</string>
 
 </resources>

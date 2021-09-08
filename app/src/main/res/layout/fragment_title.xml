@@ -31,7 +31,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/welcome_text" />
+            app:layout_constraintTop_toBottomOf="@+id/welcome_text"
+            app:layout_constraintVertical_bias="0.456" />
 
         <Button
             android:id="@+id/retrieve_list_button"
@@ -43,7 +44,19 @@
             app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/create_new_button"
-            app:layout_constraintVertical_bias="0.487" />
+            app:layout_constraintVertical_bias="0.131" />
+
+        <Button
+            android:id="@+id/manage_lists_button"
+            android:layout_width="318dp"
+            android:layout_height="84dp"
+            android:text="@string/manage_lists"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/create_new_button"
+            app:layout_constraintVertical_bias="0.718" />
 
         <ImageView
             android:id="@+id/shopping_cart_image"
