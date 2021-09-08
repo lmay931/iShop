@@ -16,5 +16,8 @@ class ManageCategoriesViewModel (
     application: Application
 ) : AndroidViewModel(application) {
 
-    var groceryItems = database.getAll(listName)
+    var groceryCategories = database.getLists()
+
+
+
 }

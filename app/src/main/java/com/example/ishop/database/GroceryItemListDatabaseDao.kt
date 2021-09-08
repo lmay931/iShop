@@ -21,6 +21,9 @@ interface GroceryItemListDatabaseDao{
     @Query("SELECT * FROM shopping_list_table WHERE list_name= :key")
     fun getAll(key: String): LiveData<List<GroceryItem>>
 
+    @Query("SELECT DISTINCT grocery_category FROM shopping_list_table")
+    fun getCategories(): List<String>
+
     @Query("SELECT DISTINCT list_name FROM shopping_list_table")
     fun getLists(): List<String>
 

@@ -30,6 +30,6 @@ class ManageListsViewModel (
         viewModelJob.cancel()
     }
 
-    }
+}
 
 
