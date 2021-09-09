@@ -19,9 +19,11 @@ class ManageCategoriesViewModel (
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    private val _categories = MutableLiveData<List<String>>()
-    val categories: LiveData<List<String>>
-        get() = _categories
+    private val _liveCategories = MutableLiveData<List<String>>()
+    val liveCategories: LiveData<List<String>>
+        get() = _liveCategories
+
+    var categories : List<String>? = listOf("")
 
     private var _showSnackBarEvent = MutableLiveData<Boolean>()
     val showSnackBarEvent: MutableLiveData<Boolean>
@@ -36,11 +38,19 @@ class ManageCategoriesViewModel (
     }
     fun getLists() {
         uiScope.launch {
-            _categories.value = getCategories()
+            _liveCategories.value = getLiveCategories()
         }
     }
 
-    private suspend fun getCategories(): List<String> {
+    fun addCategory(cat: String) {
+        categories = categories?.plus(cat)
+    }
+
+    fun setCategories() {
+        categories = _liveCategories.value
+    }
+
+    private suspend fun getLiveCategories(): List<String> {
         return withContext(Dispatchers.IO) {
             return@withContext database.getCategories()
         }

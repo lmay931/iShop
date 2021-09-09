@@ -25,5 +25,7 @@
     <string name="image_of_shopping_trolley">Image of shopping trolley</string>
     <string name="proceed_with_these_categories_button_text">Proceed with these categories</string>
     <string name="manage_grocery_categories">Manage grocery categories</string>
+    <string name="add_more_items">Edit grocery items</string>
+    <string name="edit_categories">Edit categories</string>
 
 </resources>

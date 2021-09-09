@@ -38,9 +38,21 @@ class ManageListsViewModel (
         return null
     }
 
+    fun remove(selectedList: String) {
+        uiScope.launch {
+            delete(selectedList)
+        }
+    }
+
     fun getLists() {
         uiScope.launch {
             _nameList.value = getAllLists()
+        }
+    }
+
+    private suspend fun delete(selectedList: String) {
+        withContext(Dispatchers.IO) {
+            database.clear(selectedList)
         }
     }
 

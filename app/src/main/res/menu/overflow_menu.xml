@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/fragment_new_list"
+        android:title="@string/add_more_items" />
+    <item
+        android:id="@+id/fragment_manage_categories"
+        android:title="@string/edit_categories" />
+</menu>

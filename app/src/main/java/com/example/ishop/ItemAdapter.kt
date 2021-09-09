@@ -4,6 +4,7 @@ import android.graphics.Paint.STRIKE_THRU_TEXT_FLAG
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ishop.database.GroceryItem
@@ -70,6 +71,10 @@ class ItemAdapterStrings : ListAdapter<String,ItemAdapterStrings.ViewHolder>(Str
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
         holder.binding.itemName.text = item
+    }
+
+    fun getItemByPos(position: Int): String {
+        return getItem(position)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

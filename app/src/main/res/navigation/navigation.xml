@@ -35,6 +35,10 @@
         <argument
             android:name="showItems"
             app:argType="boolean" />
+        <argument
+            android:name="groceryCategories"
+            app:argType="string[]"
+            app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/retrieveExistingListFragment"
