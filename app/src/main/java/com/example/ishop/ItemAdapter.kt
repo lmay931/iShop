@@ -1,8 +1,8 @@
 package com.example.ishop
 
 import android.graphics.Paint.STRIKE_THRU_TEXT_FLAG
-import android.view.LayoutInflater
-import android.view.ViewGroup
+import android.view.*
+import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.ListAdapter
@@ -67,7 +67,14 @@ class GroceryItemDiffCallback : DiffUtil.ItemCallback<GroceryItem>() {
 }
 
 //ViewHolder for Manage Lists
-class ItemAdapterStrings : ListAdapter<String,ItemAdapterStrings.ViewHolder>(StringDiffCallback()),ItemTouchHelperAdapter  {
+class ItemAdapterStrings : ListAdapter<String,ItemAdapterStrings.ViewHolder>(StringDiffCallback()){
+//    ,ItemTouchHelperAdapter  {
+
+    var mTouchHelper: ItemTouchHelper? = null
+
+    fun setTouchHelper(touchHelper: ItemTouchHelper?) {
+        mTouchHelper = touchHelper
+    }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
@@ -83,17 +90,78 @@ class ItemAdapterStrings : ListAdapter<String,ItemAdapterStrings.ViewHolder>(Str
         val binding = ListItemNewListBinding.inflate(layoutInflater,parent, false)
         return ViewHolder(binding)
     }
+
+
     class ViewHolder(val binding: ListItemNewListBinding): RecyclerView.ViewHolder(binding.root)
 
-    override fun onItemMove(fromPosition: Int, toPosition: Int) {
-        val fromNote = getItem(fromPosition)
-        this.currentList.
-    }
-
-    override fun onItemSwiped(position: Int) {
-        TODO("Not yet implemented")
-    }
-}
+//    class ViewHolder(val binding: ListItemNewListBinding): RecyclerView.ViewHolder(binding.root),
+//        View.OnClickListener, View.OnTouchListener, GestureDetector.OnGestureListener {
+//
+//        var mOnNoteListener: OnNoteListener? = null
+//        var mGestureDetector: GestureDetector? = null
+//
+//        override fun onTouch(v: View?, event: MotionEvent?): Boolean {
+//            mGestureDetector!!.onTouchEvent(event)
+//            return true
+//        }
+//
+//        override fun onDown(e: MotionEvent?): Boolean {
+//            return false
+//        }
+//
+//        override fun onShowPress(e: MotionEvent?) {}
+//
+//        override fun onSingleTapUp(e: MotionEvent?): Boolean {
+//            mOnNoteListener!!.onNoteClick(adapterPosition)
+//            return true
+//        }
+//
+//        override fun onScroll(
+//            e1: MotionEvent?,
+//            e2: MotionEvent?,
+//            distanceX: Float,
+//            distanceY: Float
+//        ): Boolean {
+//            return true
+//        }
+//
+////        override fun onLongPress(e: MotionEvent?) {
+////            mTouchHelper.startDrag(this)
+////        }
+//
+//        override fun onFling(
+//            e1: MotionEvent?,
+//            e2: MotionEvent?,
+//            velocityX: Float,
+//            velocityY: Float
+//        ): Boolean {
+//            return false
+//        }
+//
+//        override fun onClick(v: View?) {
+//            TODO("Not yet implemented")
+//        }
+//    }
+//
+//    interface OnNoteListener {
+//        fun onNoteClick(position: Int)
+//    }
+//
+//    override fun onItemMove(fromPosition: Int, toPosition: Int) {
+//        val fromNote = getItem(fromPosition)
+//        val newList = this.currentList.filterIndexed { index, _ ->
+//            index != fromPosition
+//        }.toMutableList()
+//        newList.add(toPosition,fromNote)
+//        submitList(newList)
+//    }
+//
+//    override fun onItemSwiped(position: Int) {
+//        submitList(this.currentList.filterIndexed { index, _ ->
+//            index != position
+//        })
+//    }
+//}
 
 class StringDiffCallback : DiffUtil.ItemCallback<String>() {
     override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
@@ -103,4 +171,5 @@ class StringDiffCallback : DiffUtil.ItemCallback<String>() {
     override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
         return oldItem == newItem
     }
+}
 }

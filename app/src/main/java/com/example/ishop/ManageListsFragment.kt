@@ -36,9 +36,13 @@ class ManageListsFragment : Fragment() {
 
         manageListsViewModel.getLists()
 
+        val adapter = ItemAdapterStrings()
+        binding.existingLists.adapter = adapter
+
         binding.clearAllListsButton.setOnClickListener {
             manageListsViewModel.setSnackBar()
             manageListsViewModel.deleteALL()
+            adapter.submitList(null)
     }
 
         manageListsViewModel.showSnackBarEvent.observe(viewLifecycleOwner, Observer {
@@ -51,9 +55,6 @@ class ManageListsFragment : Fragment() {
                 manageListsViewModel.doneShowingSnackBar()
             }
         })
-
-        val adapter = ItemAdapterStrings()
-        binding.existingLists.adapter = adapter
 
         val itemTouchHelper = ItemTouchHelper(
             object : ItemTouchHelper.SimpleCallback(

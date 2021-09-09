@@ -4,9 +4,6 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
-import com.example.ishop.formatItems
-import com.example.ishop.database.GroceryItem
 import com.example.ishop.database.GroceryItemListDatabaseDao
 import kotlinx.coroutines.*
 
@@ -44,8 +41,8 @@ class ManageCategoriesViewModel (
 
     fun remove(pos: Int) {
         categories = categories?.filterIndexed { index, _ ->
-            index != pos // you can also specify more interesting filters here...
-        } // filter, map, etc. all return you a new list. If that list must be mutable again, just add a .toMutableList() at the end
+            index != pos
+        }
     }
 
     fun addCategory(cat: String) {
@@ -56,7 +53,7 @@ class ManageCategoriesViewModel (
         categories = _liveCategories.value
     }
 
-    private suspend fun getLiveCategories(): List<String> {
+    suspend fun getLiveCategories(): List<String> {
         return withContext(Dispatchers.IO) {
             return@withContext database.getCategories()
         }
