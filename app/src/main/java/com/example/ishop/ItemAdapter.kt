@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.ishop.database.GroceryItem
 import com.example.ishop.databinding.ListItemGroceryItemBinding
 import com.example.ishop.databinding.ListItemNewListBinding
+import com.example.ishop.util.ItemTouchHelperAdapter
 
 
 //ViewHolder for Shopping mode
@@ -66,7 +67,7 @@ class GroceryItemDiffCallback : DiffUtil.ItemCallback<GroceryItem>() {
 }
 
 //ViewHolder for Manage Lists
-class ItemAdapterStrings : ListAdapter<String,ItemAdapterStrings.ViewHolder>(StringDiffCallback()) {
+class ItemAdapterStrings : ListAdapter<String,ItemAdapterStrings.ViewHolder>(StringDiffCallback()),ItemTouchHelperAdapter  {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
@@ -83,6 +84,15 @@ class ItemAdapterStrings : ListAdapter<String,ItemAdapterStrings.ViewHolder>(Str
         return ViewHolder(binding)
     }
     class ViewHolder(val binding: ListItemNewListBinding): RecyclerView.ViewHolder(binding.root)
+
+    override fun onItemMove(fromPosition: Int, toPosition: Int) {
+        val fromNote = getItem(fromPosition)
+        this.currentList.
+    }
+
+    override fun onItemSwiped(position: Int) {
+        TODO("Not yet implemented")
+    }
 }
 
 class StringDiffCallback : DiffUtil.ItemCallback<String>() {

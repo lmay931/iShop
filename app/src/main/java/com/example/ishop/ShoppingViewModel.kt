@@ -15,6 +15,5 @@ class ShoppingViewModel (
     private val listName: String,
     application: Application
 ) : AndroidViewModel(application) {
-
     var groceryItems = database.getAll(listName)
 }
