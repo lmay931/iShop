@@ -4,8 +4,6 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
-import com.example.ishop.formatItems
 import com.example.ishop.database.GroceryItem
 import com.example.ishop.database.GroceryItemListDatabaseDao
 import kotlinx.coroutines.*
@@ -38,12 +36,6 @@ class AddItemsViewModel (
         _showSnackBarEvent.value = true
     }
 
-
-    var fruitVegList = database.get(nameList, "fruit")
-
-
-
-
     private val _navigateToShopping = MutableLiveData<String>()
     val navigateToShopping: LiveData<String>
         get() = _navigateToShopping
@@ -55,6 +47,12 @@ class AddItemsViewModel (
     private suspend fun insert(item: GroceryItem) {
         withContext(Dispatchers.IO){
             database.insert(item)
+        }
+    }
+
+    private suspend fun removeItem(get: Long) {
+        withContext(Dispatchers.IO){
+            database.remove(get)
         }
     }
 
@@ -71,5 +69,11 @@ class AddItemsViewModel (
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
+    }
+
+    fun remove(get: Long) {
+        uiScope.launch {
+            removeItem(get)
+        }
     }
 }

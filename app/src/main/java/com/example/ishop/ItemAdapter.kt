@@ -5,6 +5,7 @@ import android.view.*
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ishop.database.GroceryItem
@@ -54,6 +55,11 @@ class ItemAdapterNewList : ListAdapter<GroceryItem,ItemAdapterNewList.ViewHolder
         val binding = ListItemNewListBinding.inflate(layoutInflater,parent, false)
         return ViewHolder(binding)
     }
+
+    fun get(adapterPosition: Int): Long {
+        return getItem(adapterPosition).ItemId
+    }
+
     class ViewHolder(val binding: ListItemNewListBinding): RecyclerView.ViewHolder(binding.root)
 }
 
@@ -95,6 +101,25 @@ class ItemAdapterAddItems(
                 adapter.submitList(it)
             }
         })
+
+        val itemTouchHelper = ItemTouchHelper(
+            object : ItemTouchHelper.SimpleCallback(
+                0,
+                ItemTouchHelper.RIGHT
+            ) {
+                override fun onMove(
+                    recyclerView: RecyclerView,
+                    viewHolder: RecyclerView.ViewHolder,
+                    target: RecyclerView.ViewHolder
+                ): Boolean {
+                    return false
+                }
+                override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                    viewModel.remove(adapter.get(viewHolder.adapterPosition))
+                }
+            })
+
+        itemTouchHelper.attachToRecyclerView(holder.binding.addedItemsRecyclerview)
     }
 
     fun getItemByPos(position: Int): String {
