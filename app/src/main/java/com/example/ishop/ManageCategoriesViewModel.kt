@@ -42,6 +42,12 @@ class ManageCategoriesViewModel (
         }
     }
 
+    fun remove(pos: Int) {
+        categories = categories?.filterIndexed { index, _ ->
+            index != pos // you can also specify more interesting filters here...
+        } // filter, map, etc. all return you a new list. If that list must be mutable again, just add a .toMutableList() at the end
+    }
+
     fun addCategory(cat: String) {
         categories = categories?.plus(cat)
     }
