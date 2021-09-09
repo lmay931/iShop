@@ -63,7 +63,7 @@ class ShoppingFragment : Fragment() {
     private fun navigateToNewList() {
         this.findNavController().navigate(
             ShoppingFragmentDirections
-                .actionShoppingFragmentToNewListFragment(ShoppingFragmentArgs.fromBundle(requireArguments()).listName,
+                .actionShoppingFragmentToAddItemsFragment(ShoppingFragmentArgs.fromBundle(requireArguments()).listName,
                     true,ShoppingFragmentArgs.fromBundle(requireArguments()).groceryCategories))
     }
 

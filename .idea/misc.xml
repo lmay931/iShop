@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout/fragment_add_categories.xml" value="0.2871376811594203" />
+        <entry key="app/src/main/res/layout/fragment_add_items.xml" value="0.15885416666666666" />
         <entry key="app/src/main/res/layout/fragment_choose_name.xml" value="0.1984375" />
         <entry key="app/src/main/res/layout/fragment_manage_categories.xml" value="0.2871376811594203" />
         <entry key="app/src/main/res/layout/fragment_manage_current_lists.xml" value="0.2871376811594203" />
@@ -12,6 +13,7 @@
         <entry key="app/src/main/res/layout/fragment_retrieve_existing_list.xml" value="0.18312985571587126" />
         <entry key="app/src/main/res/layout/fragment_shopping.xml" value="0.19519927536231885" />
         <entry key="app/src/main/res/layout/fragment_title.xml" value="0.19519927536231885" />
+        <entry key="app/src/main/res/layout/list_item_add_items.xml" value="0.15885416666666666" />
         <entry key="app/src/main/res/layout/list_item_grocery_item.xml" value="0.28178596519042026" />
         <entry key="app/src/main/res/layout/list_item_new_list.xml" value="0.20052083333333334" />
         <entry key="app/src/main/res/layout/text_item_view.xml" value="0.1" />

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
     app:startDestination="@id/titleFragment">
 
@@ -18,27 +17,6 @@
         <action
             android:id="@+id/action_titleFragment_to_manageListsFragment"
             app:destination="@id/manageListsFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/newListFragment"
-        android:name="com.example.ishop.NewListFragment"
-        android:label="fragment_new_list"
-        tools:layout="@layout/fragment_new_list" >
-        <action
-            android:id="@+id/action_newListFragment_to_shoppingFragment"
-            app:destination="@id/shoppingFragment"
-            app:popUpTo="@id/titleFragment"
-            app:popUpToInclusive="false" />
-        <argument
-            android:name="listName"
-            app:argType="string" />
-        <argument
-            android:name="showItems"
-            app:argType="boolean" />
-        <argument
-            android:name="groceryCategories"
-            app:argType="string[]"
-            app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/retrieveExistingListFragment"
@@ -61,8 +39,8 @@
             app:argType="string[]"
             app:nullable="true" />
         <action
-            android:id="@+id/action_shoppingFragment_to_newListFragment"
-            app:destination="@id/newListFragment" />
+            android:id="@+id/action_shoppingFragment_to_addItemsFragment"
+            app:destination="@id/addItemsFragment" />
         <action
             android:id="@+id/action_shoppingFragment_to_manageCategoriesFragment"
             app:destination="@id/manageCategoriesFragment" />
@@ -86,8 +64,8 @@
         android:name="com.example.ishop.ManageCategoriesFragment"
         android:label="ManageCategoriesFragment" >
         <action
-            android:id="@+id/action_manageCategoriesFragment_to_newListFragment"
-            app:destination="@id/newListFragment"
+            android:id="@+id/action_manageCategoriesFragment_to_addItemsFragment"
+            app:destination="@id/addItemsFragment"
             app:popUpTo="@id/titleFragment"
             app:popUpToInclusive="false" />
         <argument
@@ -96,5 +74,25 @@
         <argument
             android:name="showItems"
             app:argType="boolean" />
+    </fragment>
+    <fragment
+        android:id="@+id/addItemsFragment"
+        android:name="com.example.ishop.AddItemsFragment"
+        android:label="AddItemsFragment">
+        <action
+            android:id="@+id/action_addItemsFragment_to_shoppingFragment"
+            app:destination="@id/shoppingFragment"
+            app:popUpTo="@id/titleFragment"
+            app:popUpToInclusive="false" />
+        <argument
+            android:name="listName"
+            app:argType="string" />
+        <argument
+            android:name="showItems"
+            app:argType="boolean" />
+        <argument
+            android:name="groceryCategories"
+            app:argType="string[]"
+            app:nullable="true" />
     </fragment>
 </navigation>

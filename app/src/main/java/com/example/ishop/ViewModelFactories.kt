@@ -42,14 +42,14 @@ class ManageListsViewModelFactory (
     }
 }
 
-class NewListViewModelFactory (
+class AddItemsViewModelFactory (
     private val dataSource: GroceryItemListDatabaseDao,
     private val listName: String,
     private val application: Application) : ViewModelProvider.Factory {
     @Suppress("unchecked_cast")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(NewListViewModel::class.java)) {
-            return NewListViewModel(dataSource, listName, application) as T
+        if (modelClass.isAssignableFrom(AddItemsViewModel::class.java)) {
+            return AddItemsViewModel(dataSource, listName, application) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

@@ -36,7 +36,7 @@ class ManageListsFragment : Fragment() {
 
         manageListsViewModel.getLists()
 
-        val adapter = ItemAdapterStrings()
+        val adapter = ItemAdapterSimpleString()
         binding.existingLists.adapter = adapter
 
         binding.clearAllListsButton.setOnClickListener {

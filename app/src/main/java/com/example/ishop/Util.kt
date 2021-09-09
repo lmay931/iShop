@@ -17,5 +17,3 @@ fun formatItems(nights: List<GroceryItem>): Spanned {
     }
     return Html.fromHtml(sb.toString(), Html.FROM_HTML_MODE_LEGACY)
 }
-
-class TextItemViewHolder(val textView: TextView): RecyclerView.ViewHolder(textView)

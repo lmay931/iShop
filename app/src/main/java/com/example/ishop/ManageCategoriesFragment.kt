@@ -39,7 +39,7 @@ class ManageCategoriesFragment : Fragment() {
             manageCategoriesViewModel.setNavigateToNewList()
         }
 
-        val adapter = ItemAdapterStrings()
+        val adapter = ItemAdapterSimpleString()
         binding.existingCategories.adapter = adapter
 
         manageCategoriesViewModel.getLists()
@@ -56,7 +56,7 @@ class ManageCategoriesFragment : Fragment() {
         manageCategoriesViewModel.navigateToNewList.observe(viewLifecycleOwner, Observer { nameList : String ->
             nameList.let {
                 this.findNavController().navigate(
-                    ManageCategoriesFragmentDirections.actionManageCategoriesFragmentToNewListFragment(nameList,arguments.showItems,
+                    ManageCategoriesFragmentDirections.actionManageCategoriesFragmentToAddItemsFragment(nameList,arguments.showItems,
                         manageCategoriesViewModel.categories?.toTypedArray()
                     ))
             }

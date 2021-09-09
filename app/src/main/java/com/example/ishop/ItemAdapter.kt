@@ -2,15 +2,16 @@ package com.example.ishop
 
 import android.graphics.Paint.STRIKE_THRU_TEXT_FLAG
 import android.view.*
-import android.widget.TextView
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ishop.database.GroceryItem
+import com.example.ishop.database.GroceryItemListDatabaseDao
+import com.example.ishop.databinding.ListItemAddItemsBinding
 import com.example.ishop.databinding.ListItemGroceryItemBinding
 import com.example.ishop.databinding.ListItemNewListBinding
-import com.example.ishop.util.ItemTouchHelperAdapter
 
 
 //ViewHolder for Shopping mode
@@ -66,15 +67,64 @@ class GroceryItemDiffCallback : DiffUtil.ItemCallback<GroceryItem>() {
     }
 }
 
-//ViewHolder for Manage Lists
-class ItemAdapterStrings : ListAdapter<String,ItemAdapterStrings.ViewHolder>(StringDiffCallback()){
-//    ,ItemTouchHelperAdapter  {
+//ItemAdapter for AddItems
+class ItemAdapterAddItems(
+    private val viewModel: AddItemsViewModel,
+    val viewLifecycleOwner: LifecycleOwner,
+    private val database: GroceryItemListDatabaseDao
+) : ListAdapter<String,ItemAdapterAddItems.ViewHolder>(StringDiffCallback()) {
 
-    var mTouchHelper: ItemTouchHelper? = null
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = getItem(position)
+        holder.binding.headerNewCategory.text = item
 
-    fun setTouchHelper(touchHelper: ItemTouchHelper?) {
-        mTouchHelper = touchHelper
+        val adapter = ItemAdapterNewList()
+        holder.binding.addedItemsRecyclerview.adapter = adapter
+
+        holder.binding.buttonAddNewItem.setOnClickListener {
+            if(holder.binding.addNewItem.text.toString()==""){ viewModel.setSnackBar()}
+            else{
+                viewModel.addItem(getItem(position),holder.binding.addNewItem.text.toString())
+                holder.binding.addNewItem.text.clear()
+            }
+        }
+
+        val addedItemList = database.get(viewModel.listName, getItem(position))
+        addedItemList.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                adapter.submitList(it)
+            }
+        })
     }
+
+    fun getItemByPos(position: Int): String {
+        return getItem(position)
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val binding = ListItemAddItemsBinding.inflate(layoutInflater, parent, false)
+
+
+        return ViewHolder(binding)
+    }
+
+    class ViewHolder(val binding: ListItemAddItemsBinding) : RecyclerView.ViewHolder(binding.root)
+
+
+class StringDiffCallback : DiffUtil.ItemCallback<String>() {
+    override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
+        return oldItem == newItem
+    }
+
+    override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
+        return oldItem == newItem
+    }
+}
+}
+
+//ItemAdapter for Manage Lists and Manage Categories
+class ItemAdapterSimpleString : ListAdapter<String,ItemAdapterSimpleString.ViewHolder>(StringDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
@@ -87,89 +137,19 @@ class ItemAdapterStrings : ListAdapter<String,ItemAdapterStrings.ViewHolder>(Str
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val binding = ListItemNewListBinding.inflate(layoutInflater,parent, false)
+        val binding = ListItemNewListBinding.inflate(layoutInflater, parent, false)
         return ViewHolder(binding)
     }
 
+    class ViewHolder(val binding: ListItemNewListBinding) : RecyclerView.ViewHolder(binding.root)
 
-    class ViewHolder(val binding: ListItemNewListBinding): RecyclerView.ViewHolder(binding.root)
+    class StringDiffCallback : DiffUtil.ItemCallback<String>() {
+        override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
+            return oldItem == newItem
+        }
 
-//    class ViewHolder(val binding: ListItemNewListBinding): RecyclerView.ViewHolder(binding.root),
-//        View.OnClickListener, View.OnTouchListener, GestureDetector.OnGestureListener {
-//
-//        var mOnNoteListener: OnNoteListener? = null
-//        var mGestureDetector: GestureDetector? = null
-//
-//        override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-//            mGestureDetector!!.onTouchEvent(event)
-//            return true
-//        }
-//
-//        override fun onDown(e: MotionEvent?): Boolean {
-//            return false
-//        }
-//
-//        override fun onShowPress(e: MotionEvent?) {}
-//
-//        override fun onSingleTapUp(e: MotionEvent?): Boolean {
-//            mOnNoteListener!!.onNoteClick(adapterPosition)
-//            return true
-//        }
-//
-//        override fun onScroll(
-//            e1: MotionEvent?,
-//            e2: MotionEvent?,
-//            distanceX: Float,
-//            distanceY: Float
-//        ): Boolean {
-//            return true
-//        }
-//
-////        override fun onLongPress(e: MotionEvent?) {
-////            mTouchHelper.startDrag(this)
-////        }
-//
-//        override fun onFling(
-//            e1: MotionEvent?,
-//            e2: MotionEvent?,
-//            velocityX: Float,
-//            velocityY: Float
-//        ): Boolean {
-//            return false
-//        }
-//
-//        override fun onClick(v: View?) {
-//            TODO("Not yet implemented")
-//        }
-//    }
-//
-//    interface OnNoteListener {
-//        fun onNoteClick(position: Int)
-//    }
-//
-//    override fun onItemMove(fromPosition: Int, toPosition: Int) {
-//        val fromNote = getItem(fromPosition)
-//        val newList = this.currentList.filterIndexed { index, _ ->
-//            index != fromPosition
-//        }.toMutableList()
-//        newList.add(toPosition,fromNote)
-//        submitList(newList)
-//    }
-//
-//    override fun onItemSwiped(position: Int) {
-//        submitList(this.currentList.filterIndexed { index, _ ->
-//            index != position
-//        })
-//    }
-//}
-
-class StringDiffCallback : DiffUtil.ItemCallback<String>() {
-    override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
-        return oldItem == newItem
+        override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
+            return oldItem == newItem
+        }
     }
-
-    override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
-        return oldItem == newItem
-    }
-}
 }
