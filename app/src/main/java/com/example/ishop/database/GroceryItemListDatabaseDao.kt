@@ -30,6 +30,9 @@ interface GroceryItemListDatabaseDao{
     @Query("SELECT DISTINCT grocery_category FROM shopping_list_table")
     fun getCategories(): List<String>
 
+    @Query("SELECT DISTINCT grocery_category FROM shopping_list_table WHERE list_name=:key")
+    fun getCategoriesFromList(key: String): Array<String>
+
     @Query("SELECT DISTINCT list_name FROM shopping_list_table")
     fun getLists(): List<String>
 

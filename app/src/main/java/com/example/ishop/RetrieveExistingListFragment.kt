@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.ishop.database.GroceryItemListDatabase
 import com.example.ishop.databinding.FragmentRetrieveExistingListBinding
+import com.google.android.material.snackbar.Snackbar
 
 class RetrieveExistingListFragment : Fragment(), AdapterView.OnItemSelectedListener {
     var selectedList : String = ""
@@ -21,9 +22,7 @@ class RetrieveExistingListFragment : Fragment(), AdapterView.OnItemSelectedListe
         selectedList = parent.getItemAtPosition(pos) as String
     }
 
-    override fun onNothingSelected(parent: AdapterView<*>) {
-        // Another interface callback
-    }
+    override fun onNothingSelected(parent: AdapterView<*>) {}
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
@@ -49,20 +48,27 @@ class RetrieveExistingListFragment : Fragment(), AdapterView.OnItemSelectedListe
                     android.R.layout.simple_spinner_item, nameList
                 )
 
-
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 spinner.adapter = adapter
                 binding.retrieveExistingListViewModel = retrieveViewModel
                 binding.lifecycleOwner = this
 
                 binding.existingListsButton.setOnClickListener{
-                    retrieveViewModel.setReadyToNavigate()
+                    if(selectedList!=""){ retrieveViewModel.setCategories(selectedList)}
+                    else{
+                        Snackbar.make(
+                        requireActivity().findViewById(android.R.id.content),
+                        getString(R.string.name_not_valid),
+                        Snackbar.LENGTH_LONG
+                    ).show() }
                 }
+
                 retrieveViewModel.itemSelected.observe(viewLifecycleOwner, Observer { itemSelected: Boolean ->
                     itemSelected.let {
                         this.findNavController().navigate(
                             RetrieveExistingListFragmentDirections.
-                            actionRetrieveExistingListFragmentToShoppingFragment(selectedList))
+                            actionRetrieveExistingListFragmentToShoppingFragment(selectedList,
+                                retrieveViewModel.listCategories.value))
                     }
                 })
             }

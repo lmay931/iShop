@@ -56,16 +56,16 @@
         android:label="ShoppingFragment">
         <argument android:name="listName"
          app:argType="string"   />
+        <argument
+            android:name="groceryCategories"
+            app:argType="string[]"
+            app:nullable="true" />
         <action
             android:id="@+id/action_shoppingFragment_to_newListFragment"
-            app:destination="@id/newListFragment"
-            app:popUpTo="@id/titleFragment"
-            app:popUpToInclusive="false" />
+            app:destination="@id/newListFragment" />
         <action
             android:id="@+id/action_shoppingFragment_to_manageCategoriesFragment"
-            app:destination="@id/manageCategoriesFragment"
-            app:popUpTo="@id/titleFragment"
-            app:popUpToInclusive="false" />
+            app:destination="@id/manageCategoriesFragment" />
     </fragment>
     <fragment
         android:id="@+id/chooseNewNameFragment"

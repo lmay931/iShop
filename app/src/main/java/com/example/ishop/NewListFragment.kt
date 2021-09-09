@@ -119,7 +119,7 @@ class NewListFragment : Fragment() {
             nameList.let {
                 this.findNavController().navigate(
                     NewListFragmentDirections
-                        .actionNewListFragmentToShoppingFragment(nameList))
+                        .actionNewListFragmentToShoppingFragment(nameList,arguments.groceryCategories))
             }
         })
 

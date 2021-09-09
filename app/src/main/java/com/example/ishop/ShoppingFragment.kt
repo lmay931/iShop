@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -59,7 +60,29 @@ class ShoppingFragment : Fragment() {
         inflater.inflate(R.menu.overflow_menu,menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return NavigationUI.onNavDestinationSelected(item, requireView().findNavController()) || super.onOptionsItemSelected(item)
+    private fun navigateToNewList() {
+        this.findNavController().navigate(
+            ShoppingFragmentDirections
+                .actionShoppingFragmentToNewListFragment(ShoppingFragmentArgs.fromBundle(requireArguments()).listName,
+                    true,ShoppingFragmentArgs.fromBundle(requireArguments()).groceryCategories))
     }
-}
+
+    private fun navigateToManageCategories() {
+        this.findNavController().navigate(
+            ShoppingFragmentDirections
+                .actionShoppingFragmentToManageCategoriesFragment(ShoppingFragmentArgs.fromBundle(requireArguments()).listName, true))
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.title == R.string.add_more_items.toString()) {
+            navigateToNewList()
+            return true
+        }
+        return if(item.title == R.string.edit_categories.toString()) {
+            navigateToManageCategories()
+            true
+        } else{
+            false
+        }
+        }
+    }

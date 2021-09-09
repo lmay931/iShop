@@ -26,9 +26,18 @@ class RetrieveExistingListViewModel (
     val itemSelected: LiveData<Boolean>
         get() = _itemSelected
 
+    private val _listCategories = MutableLiveData<Array<String>>()
+    val listCategories: LiveData<Array<String>>
+        get() = _listCategories
+
     private suspend fun getAllLists(): Array<String> {
         return withContext(Dispatchers.IO) {
             return@withContext database.getArrayNames()
+        }
+    }
+    private suspend fun getCategories(listSelected : String): Array<String> {
+        return withContext(Dispatchers.IO) {
+            return@withContext database.getCategoriesFromList(listSelected)
         }
     }
 
@@ -38,8 +47,11 @@ class RetrieveExistingListViewModel (
         }
     }
 
-    fun setReadyToNavigate() {
-        _itemSelected.value = true
+    fun setCategories(listSelected : String) {
+        uiScope.launch {
+            _listCategories.value = getCategories(listSelected)
+            _itemSelected.value = true
+        }
     }
 
     override fun onCleared() {
