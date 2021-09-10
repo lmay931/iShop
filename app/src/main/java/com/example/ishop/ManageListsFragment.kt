@@ -1,19 +1,23 @@
 package com.example.ishop
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ishop.database.GroceryItemListDatabase
 import com.example.ishop.databinding.FragmentManageListsBinding
 import com.google.android.material.snackbar.Snackbar
+
+
+
 
 class ManageListsFragment : Fragment() {
 
@@ -23,6 +27,12 @@ class ManageListsFragment : Fragment() {
         val binding: FragmentManageListsBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_manage_lists, container, false
         )
+
+        Toast.makeText(
+            this.requireContext(),
+            "Hint: Swipe right on lists to remove them",
+            Toast.LENGTH_SHORT
+        ).show()
 
         val application = requireNotNull(this.activity).application
         val dataSource = GroceryItemListDatabase.getInstance(application).groceryItemDatabaseDao
@@ -82,9 +92,6 @@ class ManageListsFragment : Fragment() {
                 adapter.submitList(it)
             }
         })
-
-
-
         return binding.root
     }
 

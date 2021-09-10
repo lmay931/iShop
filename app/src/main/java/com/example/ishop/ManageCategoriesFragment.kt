@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -40,6 +41,12 @@ class ManageCategoriesFragment : Fragment() {
 
         val adapter = ItemAdapterSimpleString()
         binding.existingCategories.adapter = adapter
+
+        Toast.makeText(
+            this.requireContext(),
+            "Hint: Swipe right on categories to remove them",
+            Toast.LENGTH_SHORT
+        ).show()
 
         manageCategoriesViewModel.getLists()
 
