@@ -41,16 +41,14 @@ class ShoppingFragment : Fragment() {
         binding.shoppingViewModel = shoppingViewModel
         binding.lifecycleOwner = this
 
-        val adapter = ItemAdapterShopping()
+        val adapter = ItemAdapterShopping(shoppingViewModel,viewLifecycleOwner,dataSource)
         binding.groceryList.adapter = adapter
 
         setHasOptionsMenu(true)
 
-        shoppingViewModel.groceryItems.observe(viewLifecycleOwner, Observer {
-            it?.let {
-                adapter.submitList(it)
-            }
-        })
+        adapter.submitList(arguments.groceryCategories?.toMutableList())
+
+
 
         return binding.root
     }

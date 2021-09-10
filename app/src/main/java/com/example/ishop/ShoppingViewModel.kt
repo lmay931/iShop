@@ -6,7 +6,7 @@ import com.example.ishop.database.GroceryItemListDatabaseDao
 
 class ShoppingViewModel (
     private val database: GroceryItemListDatabaseDao,
-    private val listName: String,
+    val listName: String,
     application: Application
 ) : AndroidViewModel(application) {
     var groceryItems = database.getAll(listName)

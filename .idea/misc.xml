@@ -6,6 +6,7 @@
         <entry key="app/src/main/res/layout/fragment_add_categories.xml" value="0.2871376811594203" />
         <entry key="app/src/main/res/layout/fragment_add_items.xml" value="0.15885416666666666" />
         <entry key="app/src/main/res/layout/fragment_choose_name.xml" value="0.1984375" />
+        <entry key="app/src/main/res/layout/fragment_done.xml" value="0.159375" />
         <entry key="app/src/main/res/layout/fragment_manage_categories.xml" value="0.2871376811594203" />
         <entry key="app/src/main/res/layout/fragment_manage_current_lists.xml" value="0.2871376811594203" />
         <entry key="app/src/main/res/layout/fragment_manage_lists.xml" value="0.2798913043478261" />
@@ -16,6 +17,7 @@
         <entry key="app/src/main/res/layout/list_item_add_items.xml" value="0.6790762482363188" />
         <entry key="app/src/main/res/layout/list_item_grocery_item.xml" value="0.28178596519042026" />
         <entry key="app/src/main/res/layout/list_item_new_list.xml" value="0.20052083333333334" />
+        <entry key="app/src/main/res/layout/list_item_shopping_with_categories.xml" value="0.23385416666666667" />
         <entry key="app/src/main/res/layout/text_item_view.xml" value="0.1" />
         <entry key="app/src/main/res/menu/help_icon.xml" value="0.3223958333333333" />
         <entry key="app/src/main/res/menu/overflow_menu.xml" value="0.3234375" />
