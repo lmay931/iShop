@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
     app:startDestination="@id/titleFragment">
 
@@ -46,7 +47,9 @@
             app:destination="@id/manageCategoriesFragment" />
         <action
             android:id="@+id/action_shoppingFragment_to_done"
-            app:destination="@id/done" />
+            app:destination="@id/done"
+            app:popUpTo="@id/shoppingFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/chooseNewNameFragment"
@@ -85,8 +88,7 @@
         <action
             android:id="@+id/action_addItemsFragment_to_shoppingFragment"
             app:destination="@id/shoppingFragment"
-            app:popUpTo="@id/titleFragment"
-            app:popUpToInclusive="false" />
+            app:popUpTo="@id/titleFragment" />
         <argument
             android:name="listName"
             app:argType="string" />

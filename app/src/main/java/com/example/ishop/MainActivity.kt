@@ -2,7 +2,6 @@ package com.example.ishop
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
@@ -20,8 +19,7 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp()
     }
 
-    override fun setActionBar(toolbar: Toolbar?) {
-
-        super.setActionBar(toolbar)
+    override fun onBackPressed() {
+        this.findNavController(R.id.myNavHostFragment).popBackStack()
     }
 }

@@ -10,8 +10,8 @@ data class GroceryItem(
     @PrimaryKey(autoGenerate = true)
     var ItemId: Long = 0L,
 
-//    @ColumnInfo(name = "listId")
-//    var ListId: Long = 0L,
+    @ColumnInfo(name = "switch_set")
+    var SwitchSet: Boolean = false,
 
     @ColumnInfo(name = "list_name")
     var ListName: String = "DefaultName",

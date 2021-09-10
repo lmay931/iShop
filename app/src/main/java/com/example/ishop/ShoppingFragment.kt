@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ishop.database.GroceryItemListDatabase
 import com.example.ishop.databinding.FragmentShoppingBinding
+import com.google.android.material.snackbar.Snackbar
 
 /**
  * A simple [Fragment] subclass.
@@ -48,39 +50,33 @@ class ShoppingFragment : Fragment() {
 
         adapter.submitList(arguments.groceryCategories?.toMutableList())
 
-
-
+        shoppingViewModel.readyToNavigate.observe(viewLifecycleOwner, Observer { readyToNavigate : Boolean ->
+            readyToNavigate.let {
+                this.findNavController().navigate(
+                    ShoppingFragmentDirections.actionShoppingFragmentToDone())
+            }
+            shoppingViewModel.resetSwitches()
+        })
         return binding.root
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.overflow_menu,menu)
     }
 
-    private fun navigateToNewList() {
-        this.findNavController().navigate(
-            ShoppingFragmentDirections
-                .actionShoppingFragmentToAddItemsFragment(ShoppingFragmentArgs.fromBundle(requireArguments()).listName,
-                    true,ShoppingFragmentArgs.fromBundle(requireArguments()).groceryCategories))
-    }
-
-    private fun navigateToManageCategories() {
-        this.findNavController().navigate(
-            ShoppingFragmentDirections
-                .actionShoppingFragmentToManageCategoriesFragment(ShoppingFragmentArgs.fromBundle(requireArguments()).listName, true))
-    }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.title == R.string.add_more_items.toString()) {
-            navigateToNewList()
-            return true
+        if(item.title == "Edit categories") {
+            this.findNavController().navigate(
+                ShoppingFragmentDirections
+                    .actionShoppingFragmentToManageCategoriesFragment(ShoppingFragmentArgs.fromBundle(requireArguments()).listName, true))
         }
-        return if(item.title == R.string.edit_categories.toString()) {
-            navigateToManageCategories()
-            true
-        } else{
-            false
-        }
-        }
+        if(item.title == "Edit grocery items")
+            this.findNavController().navigate(
+                ShoppingFragmentDirections
+                    .actionShoppingFragmentToAddItemsFragment(ShoppingFragmentArgs.fromBundle(requireArguments()).listName, true,
+                        ShoppingFragmentArgs.fromBundle(requireArguments()).groceryCategories))
+        return true
     }
+}

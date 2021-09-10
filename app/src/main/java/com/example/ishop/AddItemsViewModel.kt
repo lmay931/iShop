@@ -66,14 +66,14 @@ class AddItemsViewModel (
         }
     }
 
-    override fun onCleared() {
-        super.onCleared()
-        viewModelJob.cancel()
-    }
-
     fun remove(get: Long) {
         uiScope.launch {
             removeItem(get)
         }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
     }
 }

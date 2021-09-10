@@ -15,6 +15,9 @@ interface GroceryItemListDatabaseDao{
     @Update
     fun update(item: GroceryItem)
 
+    @Query("UPDATE shopping_list_table SET switch_set='false'")
+    fun resetAllSwitches()
+
     @Query("DELETE FROM shopping_list_table")
     fun clearAll()
 
@@ -23,6 +26,9 @@ interface GroceryItemListDatabaseDao{
 
     @Query("DELETE FROM shopping_list_table WHERE ItemId=:key")
     fun remove(key: Long)
+
+    @Query("SELECT switch_set FROM shopping_list_table WHERE list_name =:key")
+    fun checkSwitches(key: String): List<Boolean>
 
     @Query("SELECT * FROM shopping_list_table WHERE list_name= :key1 AND grocery_category= :key2")
     fun get(key1: String?, key2: String): LiveData<List<GroceryItem>>

@@ -16,14 +16,14 @@ class ManageCategoriesViewModel (
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    private val _liveCategories = MutableLiveData<List<String>>()
-    val liveCategories: LiveData<List<String>>
+    private val _liveCategories = MutableLiveData<List<String>?>()
+    val liveCategories: MutableLiveData<List<String>?>
         get() = _liveCategories
 
     var categories : List<String>? = listOf("")
 
-    private var _showSnackBarEvent = MutableLiveData<Int>()
-    val showSnackBarEvent: MutableLiveData<Int>
+    private var _showSnackBarEvent = MutableLiveData<Int?>()
+    val showSnackBarEvent: MutableLiveData<Int?>
         get() = _showSnackBarEvent
 
     fun doneShowingSnackBar() {

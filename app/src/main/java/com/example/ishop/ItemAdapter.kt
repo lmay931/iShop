@@ -27,7 +27,7 @@ class ItemAdapterShopping(
         val item = getItem(position)
         holder.binding.headerCategory.text = item
 
-        val adapter = ItemAdapterNewShoppingList()
+        val adapter = ItemAdapterNewShoppingList(viewModel)
         holder.binding.addedItemsRecyclerview.adapter = adapter
 
         val addedItemList = database.get(viewModel.listName, getItem(position))
@@ -131,20 +131,29 @@ class ItemAdapterNewList : ListAdapter<GroceryItem,ItemAdapterNewList.ViewHolder
     class ViewHolder(val binding: ListItemNewListBinding): RecyclerView.ViewHolder(binding.root)
 }
 
-class ItemAdapterNewShoppingList : ListAdapter<GroceryItem,ItemAdapterNewShoppingList.ViewHolder>(GroceryItemDiffCallback()) {
+class ItemAdapterNewShoppingList(private val viewModel: ShoppingViewModel) : ListAdapter<GroceryItem,ItemAdapterNewShoppingList.ViewHolder>(GroceryItemDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
         holder.binding.itemName.text = item.Item
 
-        if (!holder.binding.gotItemSwitch.isChecked) {
+        if (!item.SwitchSet){
             holder.binding.itemName.paintFlags = 0
+            holder.binding.gotItemSwitch.isChecked = false
         }
+        if(item.SwitchSet){
+            holder.binding.itemName.paintFlags = STRIKE_THRU_TEXT_FLAG
+            holder.binding.gotItemSwitch.isChecked = true
+        }
+
         holder.binding.gotItemSwitch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 holder.binding.itemName.paintFlags = STRIKE_THRU_TEXT_FLAG
+                item.SwitchSet = true
+                viewModel.changeSwitch(item)
             } else {
                 holder.binding.itemName.paintFlags = 0
+                item.SwitchSet = false
             }
         }
     }
