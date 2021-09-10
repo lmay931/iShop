@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">iShop_2</string>
+    <string name="app_name">iShop</string>
     <string name="welcome_string">Welcome to iShop</string>
     <string name="new_list_button">Create my Shopping List</string>
     <string name="retrieve_list_button">Use an existing Shopping List</string>
@@ -27,5 +27,6 @@
     <string name="manage_grocery_categories">Manage grocery categories</string>
     <string name="add_more_items">Edit grocery items</string>
     <string name="edit_categories">Edit categories</string>
+    <string name="category_already_in_use">This category is already in your list</string>
 
 </resources>

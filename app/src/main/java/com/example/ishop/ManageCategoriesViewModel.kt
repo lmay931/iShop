@@ -22,16 +22,16 @@ class ManageCategoriesViewModel (
 
     var categories : List<String>? = listOf("")
 
-    private var _showSnackBarEvent = MutableLiveData<Boolean>()
-    val showSnackBarEvent: MutableLiveData<Boolean>
+    private var _showSnackBarEvent = MutableLiveData<Int>()
+    val showSnackBarEvent: MutableLiveData<Int>
         get() = _showSnackBarEvent
 
     fun doneShowingSnackBar() {
-        _showSnackBarEvent.value = false
+        _showSnackBarEvent.value = null
     }
 
-    fun setSnackBar() {
-        _showSnackBarEvent.value = true
+    fun setSnackBar(value: Int) {
+        _showSnackBarEvent.value = value
     }
     fun getLists() {
         uiScope.launch {

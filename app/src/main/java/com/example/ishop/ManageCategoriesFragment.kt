@@ -1,7 +1,6 @@
 package com.example.ishop
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -45,7 +44,10 @@ class ManageCategoriesFragment : Fragment() {
         manageCategoriesViewModel.getLists()
 
         binding.addCategoryButton.setOnClickListener {
-            if(binding.addCategory.text.toString()==""){ manageCategoriesViewModel.setSnackBar()}
+            if(binding.addCategory.text.toString()==""){ manageCategoriesViewModel.setSnackBar(1)}
+            if(manageCategoriesViewModel.liveCategories.value?.contains(binding.addCategory.text.toString()) == true){
+                manageCategoriesViewModel.setSnackBar(2)
+            }
             else{
                 manageCategoriesViewModel.addCategory(binding.addCategory.text.toString())
                 adapter.submitList(manageCategoriesViewModel.categories)
@@ -74,10 +76,18 @@ class ManageCategoriesFragment : Fragment() {
         })
 
         manageCategoriesViewModel.showSnackBarEvent.observe(viewLifecycleOwner, Observer {
-            if (it == true) {
+            if (it == 1) {
                 Snackbar.make(
                     requireActivity().findViewById(android.R.id.content),
                     getString(R.string.name_not_valid),
+                    Snackbar.LENGTH_LONG
+                ).show()
+                manageCategoriesViewModel.doneShowingSnackBar()
+            }
+            if (it == 2) {
+                Snackbar.make(
+                    requireActivity().findViewById(android.R.id.content),
+                    getString(R.string.category_already_in_use),
                     Snackbar.LENGTH_LONG
                 ).show()
                 manageCategoriesViewModel.doneShowingSnackBar()

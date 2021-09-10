@@ -76,7 +76,7 @@ class GroceryItemDiffCallback : DiffUtil.ItemCallback<GroceryItem>() {
 //ItemAdapter for AddItems
 class ItemAdapterAddItems(
     private val viewModel: AddItemsViewModel,
-    val viewLifecycleOwner: LifecycleOwner,
+    private val viewLifecycleOwner: LifecycleOwner,
     private val database: GroceryItemListDatabaseDao
 ) : ListAdapter<String,ItemAdapterAddItems.ViewHolder>(StringDiffCallback()) {
 
@@ -86,6 +86,7 @@ class ItemAdapterAddItems(
 
         val adapter = ItemAdapterNewList()
         holder.binding.addedItemsRecyclerview.adapter = adapter
+        holder.binding.addNewItem.hint = "Add new " + getItem(position) + " item"
 
         holder.binding.buttonAddNewItem.setOnClickListener {
             if(holder.binding.addNewItem.text.toString()==""){ viewModel.setSnackBar()}
