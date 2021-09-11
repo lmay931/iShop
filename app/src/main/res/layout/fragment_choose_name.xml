@@ -6,7 +6,7 @@
     <data>
         <variable
             name="chooseNewNameViewModel"
-            type="com.example.ishop.ChooseNewNameViewModel" />
+            type="shopping.list.ishop.ChooseNewNameViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

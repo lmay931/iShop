@@ -5,7 +5,7 @@
     <data>
         <variable
             name="shoppingViewModel"
-            type="com.example.ishop.ShoppingViewModel" />
+            type="shopping.list.ishop.ShoppingViewModel" />
     </data>
 
     <ScrollView

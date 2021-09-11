@@ -6,7 +6,7 @@
     <data>
         <variable
             name="manageListsViewModel"
-            type="com.example.ishop.ManageListsViewModel" />
+            type="shopping.list.ishop.ManageListsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="addItemsViewModel"
-            type="com.example.ishop.AddItemsViewModel" />
+            type="shopping.list.ishop.AddItemsViewModel" />
     </data>
 
     <ScrollView

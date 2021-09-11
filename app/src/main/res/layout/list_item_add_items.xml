@@ -9,7 +9,7 @@
             type="String"/>
         <variable
             name="groceryItem"
-            type="com.example.ishop.database.GroceryItem" >
+            type="shopping.list.ishop.database.GroceryItem" >
         </variable>
     </data>
 

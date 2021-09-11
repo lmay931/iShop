@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
     app:startDestination="@id/titleFragment">
 
     <fragment
         android:id="@+id/titleFragment"
-        android:name="com.example.ishop.TitleFragment"
+        android:name="shopping.list.ishop.TitleFragment"
         android:label="TitleFragment" >
         <action
             android:id="@+id/action_titleFragment_to_retrieveExistingListFragment"
@@ -21,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/retrieveExistingListFragment"
-        android:name="com.example.ishop.RetrieveExistingListFragment"
+        android:name="shopping.list.ishop.RetrieveExistingListFragment"
         android:label="RetrieveExistingListFragment" >
         <action
             android:id="@+id/action_retrieveExistingListFragment_to_shoppingFragment"
@@ -31,7 +30,7 @@
     </fragment>
     <fragment
         android:id="@+id/shoppingFragment"
-        android:name="com.example.ishop.ShoppingFragment"
+        android:name="shopping.list.ishop.ShoppingFragment"
         android:label="ShoppingFragment">
         <argument android:name="listName"
          app:argType="string"   />
@@ -53,7 +52,7 @@
     </fragment>
     <fragment
         android:id="@+id/chooseNewNameFragment"
-        android:name="com.example.ishop.ChooseNewNameFragment"
+        android:name="shopping.list.ishop.ChooseNewNameFragment"
         android:label="ChooseNewNameFragment" >
         <action
             android:id="@+id/action_chooseNewNameFragment_to_manageCategoriesFragment"
@@ -63,11 +62,11 @@
     </fragment>
     <fragment
         android:id="@+id/manageListsFragment"
-        android:name="com.example.ishop.ManageListsFragment"
+        android:name="shopping.list.ishop.ManageListsFragment"
         android:label="ManageListsFragment" />
     <fragment
         android:id="@+id/manageCategoriesFragment"
-        android:name="com.example.ishop.ManageCategoriesFragment"
+        android:name="shopping.list.ishop.ManageCategoriesFragment"
         android:label="ManageCategoriesFragment" >
         <action
             android:id="@+id/action_manageCategoriesFragment_to_addItemsFragment"
@@ -83,7 +82,7 @@
     </fragment>
     <fragment
         android:id="@+id/addItemsFragment"
-        android:name="com.example.ishop.AddItemsFragment"
+        android:name="shopping.list.ishop.AddItemsFragment"
         android:label="AddItemsFragment">
         <action
             android:id="@+id/action_addItemsFragment_to_shoppingFragment"
@@ -102,6 +101,6 @@
     </fragment>
     <fragment
         android:id="@+id/done"
-        android:name="com.example.ishop.Done"
+        android:name="shopping.list.ishop.Done"
         android:label="Done" />
 </navigation>

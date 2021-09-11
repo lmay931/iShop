@@ -6,7 +6,7 @@
     <data>
         <variable
             name="retrieveExistingListViewModel"
-            type="com.example.ishop.RetrieveExistingListViewModel" />
+            type="shopping.list.ishop.RetrieveExistingListViewModel" />
     </data>
     <ScrollView
         android:layout_width="match_parent"
